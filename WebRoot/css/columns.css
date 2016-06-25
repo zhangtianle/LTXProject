@@ -1,0 +1,59 @@
+﻿/* CSS Document */
+/*本css样式表用于设置4级页面的内容样式*/
+.columns{
+    margin-top: 12px;
+    margin-left:12px;
+}
+.menu_tree{
+    width: 730px;
+    margin-top: 6px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+}
+.menu_tree ul{
+    list-style-type: none;
+    display:inline-block;
+}
+.menu_tree li{
+    float:left;
+}
+.menu_content{
+    background-color:  #FFFFF0 ;
+    height:800px;
+    margin-bottom: 20px;
+    width:740px;
+    font-family: "宋体";
+    margin-top: 12px;
+}
+.content_title{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 12px;
+    padding-top: 25px;
+}
+.content_mini{
+    margin-top:20px;
+    text-align: center;
+    font-size:12px ;
+}
+
+.content_content{
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left:15px;
+    margin-right:10px;
+}
+.content_main{
+    text-indent: 2em;
+}
+.content_foot{
+    float:right;
+    text-align: center;
+    margin-top: 20px;
+}
+.content_content img{
+    float: left;
+    padding:10px 110px;
+    width: 510px;
+}
+

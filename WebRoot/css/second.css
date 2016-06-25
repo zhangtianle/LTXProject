@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+/*本css样式表用于设置2级页面样式*/
+.columns{
+    margin-left:14px;
+    margin-bottom:10px;
+    width: 730px;
+}
+.menu_tree{
+    width: 730px;
+    margin-top: 6px;
+    margin-left: 4px;
+    margin-bottom: 10px;
+}
+.menu_tree li{
+    float: left;
+    list-style-type: none;
+}
+.column{
+    background-color: #ffffff;
+    width: 730px;
+}
+.column_title{
+    height: 40px;
+    background-color: #230058;
+}
+.column_title h2{
+    padding-left: 18px;
+    padding-top: 4px;
+    color: #ffffff;
+    font-size:22px ;
+}
+.column_title li{
+    list-style-position: inside;
+}
+.column_title a{
+    text-decoration: none;
+    color: #ffffff;
+    font-family: '微软雅黑';
+    font-weight: normal;
+    padding-right: 10px;
+    padding-top: 6px;
+    font-size:14px ;
+    float: right;
+}
+.column_content{
+    margin-left: 18px;
+    width:700px;
+}
+.column_content li{
+     list-style-image: url(../img/mk.png);
+     font-size: 20px;
+     height: 32px;
+ }
+.column_content ul{
+    list-style-image: url(../img/mk.png);
+    font-size: 20px;
+}
+.column_content a{
+    text-decoration: none;
+    color: #000000;
+  }
+.column_content a:hover{
+    color: #230058;
+}
+.column_content_date li{
+    list-style-type: none;
+    font-size: 20px;
+    height: 32px;
+}

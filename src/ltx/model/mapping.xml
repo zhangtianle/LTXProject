@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ltx.model.ArticleMapper">
+	<select id="getTilte" parameterType="String" resultType="ltx.model.Article">
+		SELECT
+
+		*
+
+		from article where articleType=#{articleType} ORDER
+
+		BY
+		article.uploadTime
+
+		desc limit 0,5
+	</select>
+
+	<!-- 根据 articleId 获取文章 -->
+	<select id="getArticleById" parameterType="String" resultType="ltx.model.Article">
+		select
+		articleId,articleTitle,articleType,articleContext,articleAuthor,uploadTime,createTime
+		from article where articleId=#{articleId}
+	</select>
+
+	<!-- 根据 articleId 删除文章 -->
+	<delete id="deleteArticleById">
+		delete from article where articleId=#{articleId}
+	</delete>
+
+	<!-- 修改文章 -->
+	<update id="updateArticleById">
+		update article set
+		articleTitle=#{articleTitle},articleType=#{articleType},
+		articleContext=#{articleContext},articleAuthor=#{articleAuthor},uploadTime=#{uploadTime}
+		where articleId=#{articleId}
+	</update>
+
+	<!-- 通过typeId在ArticleType表中查询各项信息 -->
+	<select id="getTypeName" parameterType="String" resultType="ltx.model.ArticleType">
+		select typeId,articleType,typeName,parentType from articletype where
+		articleType=#{typeId}
+	</select>
+	<!--查询符合条件的文章标题总数 -->
+	<select id="getTotalCount" resultType="long">
+		SELECT COUNT(*) FROM
+		article WHERE articleType = #{articleType,jdbcType=INTEGER}
+	</select>
+
+	<!--根据parentId文章标题总数 -->
+	<select id="getTotalCountByParentId" resultType="int">
+		SELECT count(*)
+		from article a,articletype a_type where
+		a_type.parentType=#{parentType} and a.articleType=a_type.articleType
+	</select>
+
+	<!--通过articleType 得到articleTitle param1表示articleType param2表示pageNum 附带分页功能 -->
+	<select id="getThirdTitle" resultType="ltx.model.Article">
+		select
+		articleId,articleType,articleTitle,articleContext,articleAuthor,uploadTime
+		from article where articleType=#{param1}
+		limit #{param2},#{param3}
+	</select>
+
+	<!-- 根据parentId查询所有子类别 -->
+	<select id="getAllChildType" resultType="ltx.model.ArticleType">
+		select
+		typeId,typeName,articleType from articleType
+		where
+		parentType=#{parentId}
+	</select>
+
+	<!-- 通过articleTitle查询所有文章 -->
+	<select id="findArticleByTitle" 
+		resultType="ltx.model.Article">
+		select
+
+		articleId
+		,articleTitle
+		,articleType
+		,articleContext
+		,articleAuthor
+		,uploadTime
+		,createTime
+
+		from article
+
+		where
+		articleTitle LIKE "%"#{articleTitle}"%"
+		limit #{startPos},#{pageSize}
+	</select>
+	
+	<!-- 总共的查询条数 -->
+	<select id="getTotalSearchCount" parameterType="String"
+		resultType="long">
+		select
+		count(articleId)
+		from article
+		where
+		articleTitle LIKE "%"#{articleTitle}"%"
+	</select>
+	
+	<!-- 得到搜索结果条数/站内搜索 -->
+	<select id="getTotalSearchCount_type" parameterType="ltx.model.Article"
+		resultType="long">
+		select
+		count(articleId)
+		from article a,
+		articleType b2 ,articleType b1
+		where
+		a.articleTitle LIKE "%"#{articleTitle}"%"
+		and
+		(b1.parentType=b2.articleType or b2.articleType=a.articleType)
+		and a.articleType=b1.articleType
+		and
+		b2.typeName=#{articleType};
+	</select>
+	<!-- 通过文章名称以及文章类型查询文章 -->
+	<select id="findArticleByTitle_type" resultType="ltx.model.Article">
+		select
+		
+		 articleID
+		,articleTitle
+		,a.articleType as articleType
+		,articleContext
+		,articleAuthor
+		,uploadTime
+		,createTime
+		,b2.typeName as articleTypeName
+		from article a,
+		articleType b2 ,articleType b1
+		where
+		a.articleTitle LIKE "%"#{articleTitle}"%"
+		and
+		(b1.parentType=b2.articleType or b2.articleType=a.articleType)
+		and a.articleType=b1.articleType
+		and
+		b2.typeName=#{articleType}
+		limit #{startPos},#{pageSize}
+		;
+	</select>
+
+	<!-- 根据parentId查询所有文章 -->
+	<select id="getAllChildTypeByParentId" resultType="ltx.model.Article">
+		SELECT
+		a.articleId,a.articleType,a.articleTitle,a.articleContext,a.articleAuthor,a.uploadTime
+		from article a,articletype a_type where
+		a_type.parentType=#{parentType} and a.articleType=a_type.articleType
+		LIMIT #{startPos},#{pageSize}
+	</select>
+
+	<!-- 根据parentId查询parentTypeName -->
+	<select id="getParantTypeName" parameterType="String"
+		resultType="String">
+		select typeName from articleType
+		where
+		articleType=#{parentId}
+	</select>
+
+	<!-- author by Elvis -->
+	<!-- 根据articleType。parentType从articleType表俩面查出article。articleType -->
+	<select id="getArtivleType" parameterType="int"
+		resultType="ltx.model.ArticleType">
+		SELECT * from articletype where
+		articletype.parentType=#{parentType}
+	</select>
+
+
+	<!-- 根据获得的articleType一次查询数据库的按日期排列的前五条数据 -->
+	<select id="getArticle" parameterType="int" resultType="ltx.model.Article">
+		SELECT *
+
+		from article where articleType=#{articleType} ORDER BY
+		article.uploadTime
+
+		desc limit 0,5
+	</select>
+
+	<!-- 获取所有的文章类型 -->
+	<select id="getAllType" resultType="ltx.model.ArticleType">
+		SELECT * from articletype
+		where articleType not in (1,2,3,4,5);
+	</select>
+
+
+	<!-- 获取没有二级属性的所有统计数据 -->
+	<select id="getCountNoSecond" parameterType="int" resultType="int">
+		SELECT count(*) from article where articleType=#{articleType};
+	</select>
+
+	<select id="getImage" resultType="ltx.model.Image">
+		SELECT*from image where
+		articleId in (SELECT articleId from article where articleType in
+		(SELECT articleType from articletype where parentType=2)) GROUP BY
+		imgUrl LIMIT 0,5;
+	</select>
+
+	<!--用户注册 -->
+	<insert id="regist" parameterType="String" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into user(username,password)
+		values(#{username},#{password})
+	</insert>
+	<!--用户登录 -->
+	<!-- 根据 articleId 获取文章 -->
+	<select id="findByUsername" parameterType="String" resultType="ltx.model.User">
+		select
+		id,username,password from user where username=#{username}
+	</select>
+
+	<!--发布新闻 -->
+	<insert id="postArticle" useGeneratedKeys="true" keyProperty="articleId"
+		parameterType="ltx.model.Article">
+		insert into
+		article(articleTitle,articleType,articleContext,articleAuthor,uploadTime,createTime)
+		values(#{articleTitle}
+		,#{articleType}
+		,#{articleContext}
+		,#{articleAuthor}
+		,#{uploadTime}
+		,#{createTime})
+	</insert>
+	<!-- 上传图片 -->
+	<insert id="upLoadImage" useGeneratedKeys="true" keyProperty="imageid"
+		parameterType="ltx.model.Image">
+		insert into
+		image(imgUrl,articleId)
+		values(#{imgUrl}
+		,#{articleId})
+	</insert>
+	<!-- 上传文件/文件以文章附件形式上传 -->
+	<insert id="upLoadFile" useGeneratedKeys="true" keyProperty="id"
+		parameterType="ltx.model.Accessory">
+		insert into
+		accessory(accName,articleId,fileName,upLoadTime)
+		values(#{accName},#{articleId},#{fileName},#{upLoadTime})
+	</insert>
+	<!-- 上传文件/文件单独上传 -->
+	<insert id="upLoadForFile" useGeneratedKeys="true" keyProperty="id"
+		parameterType="ltx.model.Accessory">
+		insert into
+		accessory(accName,fileName,upLoadTime)
+		values(#{accName},#{fileName},#{upLoadTime})
+	</insert>
+	<!-- 显示服务器上所有文章 -->
+	<select id="showDownLoadList" resultType="ltx.model.Accessory">
+		select * from accessory
+	</select>
+	
+	<!-- 显示服务器上所有文章（分页） -->
+	<select id="showDownLoad" resultType="ltx.model.Accessory">
+		select * from accessory LIMIT #{startPos},#{pageSize}
+	</select>
+	<!-- 搜索文章 -->
+	<select id="findArticle" resultType="ltx.model.Article"
+		parameterType="ltx.model.Article">
+		SELECT
+		a.articleId
+		,a.articleTitle
+		,b.typename as articleType
+		,a.articleContext
+		,a.articleAuthor
+		,a.uploadTime
+		,a.createTime
+		FROM
+		article a, articleType
+		b
+		WHERE
+		<if test="articleTitle != null ">
+			articleTitle LIKE "%"#{articleTitle}"%"
+		</if>
+		<if test="articleAuthor != null">
+			and articleAuthor LIKE "%"#{articleAuthor}"%"
+		</if>
+		<if test="uploadTime != null">
+			and uploadTime =#{uploadTime}
+		</if>
+		<if test="createTime != null">
+			and createTime =#{createTime}
+		</if>
+		and a.articletype=b.articleType
+	</select>
+
+	<!-- 通过accessory的id查找/备用，当前台无法传入时调用 -->
+	<select id="getAccessoryById" resultType="ltx.model.Accessory">
+		select * from
+		accessory where id=#{id}
+	</select>
+	
+	<!-- 删除文件 -->
+	<delete id="deleteAccessoryById">
+		delete from accessory where id=#{id}
+	</delete>
+</mapper>
+

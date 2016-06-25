@@ -1,0 +1,55 @@
+﻿/* CSS Document */
+/*本css样式表用于设置主页index的样式*/
+/*newsPHO*/
+.news_pho{width: 284px;height: 220px;margin-left:10px;margin-top: 6px; overflow:hidden; position:relative;}
+#list{ width:1988px; height:220px; position:absolute; z-index:1;clear:both;}
+#list img{ float:left;}
+#buttons{ position:absolute; height:8px;z-index:2; bottom:10px; left:119px;}
+#buttons span{ cursor:pointer; float:left; border:1px solid #000; width:5px; height:5px; margin-right:5px;}
+#buttons .on{ background:#f00;}
+.arrow{ cursor:pointer; display:none; line-height:39px; text-align:center; font-size:36px; font-weight:bold; width:40px;
+    height:40px;position:absolute; z-index:2; top:100px; background:#ccc;color: #230058;}
+.arrow:hover{ background:#000;}
+.news_pho:hover .arrow{ display:block;}
+#prev{ left:5px;}
+#next{ right:5px;}
+#list img{
+	width: 284px;
+}
+/*announcement*/
+.announcement{width:330px;height: 220px;margin-top: 6px;margin-left:14px;background-color: #ffffff}
+/*news*/
+.news{width: 334px;height: 220px; margin-top: 6px;margin-left:14px;background-color: #ffffff}
+/*party building work*/
+.party_building{width:284px; height:216px;margin-top:6px; margin-left: 10px;background-color: #ffffff}
+/*care for the next generation*/
+.care_generation{width:330px; height: 216px;margin-top: 6px;margin-left: 14px;background-color: #ffffff}
+/*entertainment*/
+.entertainment{width: 334px; height: 216px; margin-left: 14px;margin-top: 6px;background-color: #ffffff}
+/*health*/
+.health{width: 284px; height:212px; margin-left: 10px; margin-top:10px; background-color: #ffffff}
+/*link*/
+.link{width: 538px; height: 212px; margin-left:14px; margin-top: 10px; background-color:#D2D2D2;overflow: hidden;}
+.link p{margin-top:10px;}
+.link p a{color: #230058;margin:26px 18px; font-size: 20px;line-height:40px; }
+/*enter*/
+.enter{width:140px; height: 224px; margin-left: 8px;margin-top: 10px;}
+/*title*/
+.title{width: 334px;height: 36px;background-image: url(../img/subTitle2.png);overflow: hidden;}
+.title_1{width: 284px;height: 36px;background-image: url(../img/subTitle1.png);overflow: hidden;}
+.title_2{width: 538px;height: 36px;background-image: url(../img/subTitle3.png);overflow: hidden;}
+.title h1 a{font: 14px normal; padding-right: 6px; float: right;line-height: 36px; color: #230058;display:inline;overflow: hidden;}
+.title_1 h1 a{font: 14px normal; padding-right: 6px; float: right;line-height: 36px; color: #230058;display:inline;overflow: hidden;}
+.title_2 h1 a{font: 14px normal; padding-right: 6px; float: right;line-height: 36px; color: #230058;display:inline;overflow: hidden;}
+/*content*/
+.content{width: 320px;height:168px;margin-left: 4px;margin-top: 12px;list-style-image:url(../img/mk.png);
+list-style-position:inside;overflow: hidden;}
+.content_1{width: 270px;height: 170px; margin-top: 12px; margin-left: 8px;list-style-image:url(../img/mk.png);
+    list-style-position:inside;overflow: hidden;}
+.content a,.content_1 a,.content_2 a{color: #000;list-style-image:url(../img/mk.png);}
+.content a:hover,.content_1 a:hover,.content_2 a:hover{color: #230058;}
+.date{width: 46px; height:168px;margin-right: 4px;margin-top: 12px;padding-bottom: 12px;list-style-type: none;}
+.date ul{list-style-type: none;}
+
+/*more*/
+.more{padding-right: 6px;}

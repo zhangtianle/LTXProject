@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* CSS Document */
+/*本css样式表用于设置2~4级页面的侧边导航样式*/
+.sidebar,.columns{
+    margin-top: 12px;
+}
+/*侧边板块*/
+.sidebar{
+    margin-left: 44px;
+    width:192px;
+}
+/*侧边导航*/
+.nav_title{
+    background-image: url(../img/subNav.png);
+    height: 36px;
+}
+.sub_nav_list{
+    /*padding-left: 30px;*/
+    border:2px solid #230058;
+    border-top: none;
+    background-color: #ffffff;
+    color: #230058;
+    font-size: 22px;
+    font-family: '微软雅黑';
+    text-align: center;
+    line-height: 50px;
+}
+.sub_nav_list li{
+    list-style-type: disc;
+    list-style-position:inside;
+}
+/*搜索框*/
+.search_box{
+    margin-top:10px ;
+    margin-bottom: 10px;
+    height:56px;
+    border:2px solid #230058;
+}
+.search_bar_text{
+    margin-top: 14px;
+    margin-left: 12px;
+    height: 20px;
+    width: 104px;
+    border:2px solid #230058;
+    vertical-align:middle;
+}
+.search_bar_btn{
+    margin-top: 14px;
+    margin-left: -6px;
+    width: 60px;
+    height: 24px;
+    border:2px solid #230058;
+    background-color: #230058;
+    color: #ffffff;
+    vertical-align:middle;
+    font-family: '微软雅黑';
+}

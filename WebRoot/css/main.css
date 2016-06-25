@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+/*本css样式表用于设置所有页面的头部、导航以及尾部样式*/
+/* reset */
+body,h1,h2,h3,h4,h5,p,dl,dd,ul,ol,form,input,textarea,th,td,select { margin:0; padding:0}
+em { font-style:normal}
+/*li { list-style:none}*/
+a { text-decoration:none}
+img { border:none; vertical-align:top}
+table { border-collapse:collapse}
+input,textarea { outline:none}
+textarea { resize:none; overflow:auto}
+body { font-size:15px; font-family:"微软雅黑";background-color: #8d8d8d;}
+h1{color: #230058; padding-left: 14px;font-size: 24px;display:inline;}
+/* end reset */
+
+/*清浮动*/
+.clear:after{content:"";display:block;clear:both;}
+.clear{zoom:1;}
+.fl{float:left;}
+.fr{float:right;}
+.ar{text-align:right;}
+.block{display: block;}
+
+/*公用*/
+.comwidth{width: 1000px;margin-left: auto;margin-right: auto;}
+.hide{display:none;}
+.show{display:block;}
+#main{background-color:#e6e6e6;}
+/*#main ul{list-style-image:url(../img/mk.png);}*/
+
+/*头部样式*/
+.header{
+    width: 1000px;
+    height: 152px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#3e008b;
+}
+.logo{
+    padding-left: 0px;
+}
+/*search*/
+.header .search_form{width: 200px; height: 26px; position: relative;margin-right: 30px;}
+.header .search_text{margin-top: 60px;margin-right:30px;padding-left:6px;width:194px;height: 28px;line-height: 28px;border:none;background-image:url(../img/search_box.gif);
+    font-size:12px;font-family:'微软雅黑';vertical-align: middle;color:#000;position: absolute;}
+.header .search_btn{line-height:28px;margin-top:60px;border:none;position: absolute;margin-left:176px;margin-top: 60px;}
+/*nav*/
+.navbar{
+    width: 1000px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background: url(../img/navBg.gif) repeat-x;
+}
+
+.navbar li{
+    margin:auto;
+    float: left;
+    line-height: 50px;
+    padding-left:4px;
+}
+.navbar li:first-child{padding-left:68px;}
+.navbar a{
+    font-size: 18px;
+    line-height: 50px;
+    font-family: '微软雅黑';
+    color: #000000;
+    display: inline-block;
+    text-align: center;
+    text-decoration:none;
+    width:84px;
+}
+.navbar a:hover{background:url(../img/hoverBg.gif) repeat-x;background-position: center; text-decoration:none; color:white; font-weight:bold;}
+/*main*/
+.sight{width: 1000px;height: 200px;background-image: url(../img/picWall9.png);}
+
+/*footer*/
+#footer{height: 80px;background-color:#3e008b; }
+#footer p{color: #fff; text-align: center;line-height: 80px; font-family: '宋体';}
